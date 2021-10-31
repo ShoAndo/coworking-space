@@ -7,6 +7,14 @@
   </head>
   <body>
     <h1>コワーキングスペース予約</h1>
+{% for seat in seats %}
+    <form method="POST" action="{% url 'reserve' seat.id %}">
+      {% csrf_token %}
+
+      <label><input type="checkbox" value="{{ seat.id }}" name="number">{{ seat.number }}</label>
+      <input type="submit" value="予約" name="">
+    </form>
+{% endfor %}
     {% if request.user.is_authenticated %}
     <a href="{% url 'logout' %}">ログアウト</a>
     {% else %}
