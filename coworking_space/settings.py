@@ -129,3 +129,4 @@ IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
 IMAGE_URL = '/images/'
 
 LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL= 'index'

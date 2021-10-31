@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth import login
+from django.contrib.auth.views import LoginView ,LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
@@ -17,3 +19,6 @@ class SignUpView(generic.CreateView):
   template_name = 'registration/signup.html'
 
 
+
+class Logout(LoginRequiredMixin, LogoutView):
+  template_name = 'index.html'
