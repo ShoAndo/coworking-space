@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 class Store(models.Model):
   address = models.CharField(max_length=256, blank=False)
+  name = models.CharField(max_length=32, blank=False)
 
   def __str__(self):
     return self.address
