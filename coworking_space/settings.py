@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cowork.apps.CoworkConfig'
+    'cowork.apps.CoworkConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,5 @@ IMAGE_URL = '/images/'
 
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL= 'index'
+
+SHELL_PLUS = "ipython"

@@ -10,7 +10,6 @@
 {% for seat in seats %}
     <form method="POST" action="{% url 'reserve' seat.id %}">
       {% csrf_token %}
-
       <label><input type="hidden" value="{{ seat.id }}" name="number">{{ seat.number }}</label>
       <input type="submit" value="予約" name="">
     </form>
