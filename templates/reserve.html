@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+{% block title %} 予約確認 {% endblock %}
+{% block content %}
+  <h3>こちらの席でご予約します。</h3>
+  <p>{{ seat.store.name }}</p>
+  <p>{{ seat.number}}人用席</p>
+  <form method="POST" action="{% url 'confirm' %}">{% csrf_token %}
+    <input type="submit" name="seat_id"  value="予約する">
+    <input type="hidden" name="seat_id" value="{{ seat.id }}">
+  </form>
+  <form action="{% url 'index' %}"><input type="button"  value="キャンセル"></form>
+{% endblock %}
+

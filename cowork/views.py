@@ -34,5 +34,12 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 def reserve(request, seat_id):
   seat = Seat.objects.get(id = seat_id)
-  print(seat)
-  return render(request, 'reserve.html')
+  return render(request, 'reserve.html', {'seat':seat})
+
+@login_required
+def reserve_confirm(request):
+
+  seat = Seat.objects.get(id = request.POST['seat_id'])
+  seat.user = request.user
+  seat.save()
+  return render(request, 'confirm.html')
