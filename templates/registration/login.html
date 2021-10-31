@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  </head>
+  <body>
+    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+      <div class='field'>
+        <div class='field-label'>
+          <label for="name">名前</label>
+        </div>
+        <div class='field-input'>
+         {{ form.username }}
+        </div>
+      </div>
+      <div class='field'>
+        <div class='field-label'>
+          <label for="password">パスワード</label>
+          <i>(英数字8文字以上)</i>
+        </div>
+        <div class='field-input'>
+          {{ form.password }}
+        </div>
+      </div>
+      <div class='actions'>
+        <input type="submit" value="登録" class="btn">
+      </div>
+    </form>
+  </body>
+</html>

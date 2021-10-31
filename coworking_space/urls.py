@@ -20,5 +20,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cowork.urls'))
+    path('', include('cowork.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.IMAGE_URL, document_root=settings.IMAGE_ROOT)

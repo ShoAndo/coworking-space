@@ -127,3 +127,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 IMAGE_ROOT = os.path.join(BASE_DIR, 'images')
 
 IMAGE_URL = '/images/'
+
+LOGIN_REDIRECT_URL = 'index'
