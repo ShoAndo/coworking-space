@@ -18,6 +18,7 @@ def index(request):
     'store': store,
     'seats': seats,
   }
+
   if request.user.is_authenticated: 
     user = request.user
     contents['user'] = user
@@ -25,6 +26,7 @@ def index(request):
     if user_seat:
       res_seat = user_seat[0]
       contents['res_seat'] = res_seat
+
   return render(request, 'index.html', contents)
 
 class SignUpView(generic.CreateView):
@@ -33,11 +35,16 @@ class SignUpView(generic.CreateView):
   template_name = 'registration/signup.html'
 
 
-
 class Logout(LoginRequiredMixin, LogoutView):
   template_name = 'index.html'
 
+@login_required
 def reserve(request, seat_id):
   seat = Seat.objects.get(id = seat_id)
-  print(seat)
-  return render(request, 'reserve.html')
+  return render(request, 'reserve.html', {'seat':seat})
+
+@login_required
+def reserve_confirm(request):
+  return render(request, 'confirm.html')
+
+
