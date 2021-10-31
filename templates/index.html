@@ -17,8 +17,13 @@
 {% endfor %}
     {% if request.user.is_authenticated %}
     <a href="{% url 'logout' %}">ログアウト</a>
+    {% if res_seat %}
+      <p>{{ res_seat.user }}</p>
+      <p>{{ res_seat.number }}人用席</p>
+    {% endif %}
     {% else %}
     <a href="{% url 'signup' %}">会員登録</a>
     {% endif %}
+    
   </body>
 </html>
