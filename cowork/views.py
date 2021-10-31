@@ -8,21 +8,25 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView ,LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .utils import get_defalt_store
-from .models import Seat
+from .models import Seat, Store
 
 
 def index(request):
   store = get_defalt_store()
-  seats = store.seats.all()
+  seats = store.seats.filter(user=None)
   contents = {
     'store': store,
     'seats': seats,
   }
 
-  if request.user:
+  if request.user.is_authenticated: 
     user = request.user
     contents['user'] = user
-  
+    user_seat = Seat.objects.filter(user=user)
+    if user_seat:
+      res_seat = user_seat[0]
+      contents['res_seat'] = res_seat
+
   return render(request, 'index.html', contents)
 
 class SignUpView(generic.CreateView):
